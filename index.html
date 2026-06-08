@@ -7,20 +7,21 @@
   <meta name="description" content="Hjemby forbinder naboer. Lån ting, få råd og hjælp tæt på dig. Nu i beta." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #F5F1E9;
-      --green: #358D7B;
+      --bg:         #F5F1E9;
+      --green:      #358D7B;
       --green-dark: #2a7162;
-      --text: #1a1f2e;
-      --amber: #E09520;
-      --white: #ffffff;
-      --border: rgba(26,31,46,.12);
-      --radius: 14px;
-      --radius-sm: 8px;
+      --text:       #1a1f2e;
+      --muted:      #5a6470;
+      --border:     #DDD8CE;
+      --urgency:    #5B8DB8;
+      --amber:      #E09520;
+      --radius:     12px;
+      --radius-sm:  8px;
     }
 
     html { scroll-behavior: smooth; }
@@ -34,85 +35,22 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, blockquote {
       font-family: 'Fraunces', serif;
       line-height: 1.15;
-      font-weight: 600;
     }
 
-    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
 
     .container {
       width: 100%;
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* ── NAVIGATION ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(245,241,233,.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      gap: 16px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .nav-logo-text {
-      font-family: 'Fraunces', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -.3px;
-    }
-
-    .beta-pill {
-      background: var(--amber);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      padding: 3px 9px;
-      border-radius: 20px;
-      flex-shrink: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text);
-      opacity: .75;
-      transition: opacity .2s;
-    }
-
-    .nav-links a:hover { opacity: 1; }
-
+    /* ─── BUTTONS ─── */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -121,53 +59,124 @@
       font-family: 'DM Sans', sans-serif;
       font-size: 15px;
       font-weight: 600;
-      padding: 11px 22px;
+      padding: 12px 22px;
       border-radius: var(--radius-sm);
       border: none;
       cursor: pointer;
-      transition: background .2s, transform .1s, opacity .2s;
+      transition: opacity .18s, transform .12s;
       white-space: nowrap;
+      line-height: 1;
+    }
+    .btn:active { transform: scale(.97); }
+    .btn-green  { background: var(--green); color: #fff; }
+    .btn-green:hover { background: var(--green-dark); }
+    .btn-dark   { background: var(--text);  color: #fff; }
+    .btn-dark:hover { opacity: .85; }
+    .btn-white  { background: #fff; color: var(--green); }
+    .btn-white:hover { opacity: .9; }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      height: 60px;
+      background: rgba(245,241,233,.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .btn:active { transform: scale(.98); }
-
-    .btn-primary {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .btn-primary:hover { background: var(--green-dark); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-
-    .btn-outline:hover { border-color: var(--text); }
-
-    .btn-white {
-      background: #fff;
-      color: var(--green);
-    }
-
-    .btn-white:hover { background: #f0f0f0; }
-
-    .nav-right {
+    .nav-inner {
+      height: 60px;
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
+      gap: 16px;
     }
 
-    @media (max-width: 680px) {
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .nav-logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 21px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -.3px;
+    }
+
+    .beta-pill {
+      background: var(--amber);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .18s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
       .nav-links { display: none; }
-      .nav-logo-text { font-size: 19px; }
     }
 
-    /* ── HERO ── */
-    .hero {
-      padding: 72px 0 80px;
+    /* ─── SECTIONS ─── */
+    section { padding: 80px 0; }
+
+    .section-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .9px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 12px;
     }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(26px, 3.8vw, 40px);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 14px;
+      letter-spacing: -.3px;
+    }
+
+    .section-lead {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    /* ─── HERO ─── */
+    .hero { padding: 68px 0 80px; }
 
     .hero-grid {
       display: grid;
@@ -175,47 +184,46 @@
       gap: 52px;
       align-items: center;
     }
-
     @media (min-width: 860px) {
-      .hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 64px;
-      }
+      .hero-grid { grid-template-columns: 1fr 1fr; gap: 60px; }
     }
 
-    .eyebrow {
+    .hero-eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 600;
+      gap: 7px;
+      background: rgba(53,141,123,.1);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
       letter-spacing: .4px;
       text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 18px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 20px;
     }
 
-    .eyebrow::before {
+    .hero-eyebrow::before {
       content: '';
-      display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 7px; height: 7px;
       border-radius: 50%;
       background: var(--green);
-      animation: pulse 2s infinite;
+      flex-shrink: 0;
+      animation: blink 2.2s ease-in-out infinite;
     }
 
-    @keyframes pulse {
+    @keyframes blink {
       0%, 100% { opacity: 1; }
-      50% { opacity: .4; }
+      50% { opacity: .3; }
     }
 
     .hero h1 {
-      font-size: clamp(38px, 6vw, 64px);
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5.5vw, 60px);
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 20px;
       letter-spacing: -.5px;
+      margin-bottom: 18px;
     }
 
     .hero h1 em {
@@ -224,65 +232,50 @@
     }
 
     .hero-lead {
-      font-size: 18px;
-      line-height: 1.65;
-      color: rgba(26,31,46,.75);
-      margin-bottom: 32px;
-      max-width: 480px;
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+      max-width: 460px;
     }
 
-    .store-buttons {
+    /* Store buttons */
+    .store-row {
       display: flex;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
 
     .store-btn {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       background: var(--text);
       color: #fff;
-      padding: 10px 18px;
+      padding: 9px 16px;
       border-radius: var(--radius-sm);
-      transition: background .2s;
+      transition: opacity .18s;
     }
-
-    .store-btn:hover { background: #2e3447; }
-
+    .store-btn:hover { opacity: .82; }
     .store-btn-label { display: flex; flex-direction: column; }
-    .store-btn-sub { font-size: 10px; opacity: .7; line-height: 1.2; }
-    .store-btn-name { font-size: 14px; font-weight: 600; line-height: 1.3; }
+    .store-btn-sub  { font-size: 9px;  opacity: .65; line-height: 1.2; }
+    .store-btn-name { font-size: 13px; font-weight: 700; line-height: 1.3; }
 
-    /* ── SIGNUP FORM ── */
-    .signup-form {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
+    /* Form */
+    .signup-form { display: flex; flex-direction: column; gap: 10px; }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: 10px;
     }
-
     @media (min-width: 480px) {
       .form-row { grid-template-columns: 1fr 1fr; }
     }
 
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .field label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-    }
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field label { font-size: 12px; font-weight: 600; color: var(--text); }
 
     .field input,
     .field select {
@@ -292,128 +285,134 @@
       background: #fff;
       border: 1.5px solid var(--border);
       border-radius: var(--radius-sm);
-      padding: 11px 14px;
+      padding: 11px 13px;
       outline: none;
-      transition: border-color .2s;
+      transition: border-color .18s, box-shadow .18s;
       width: 100%;
       appearance: none;
       -webkit-appearance: none;
     }
-
     .field input:focus,
-    .field select:focus { border-color: var(--green); }
-
-    .select-wrapper {
-      position: relative;
+    .field select:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(53,141,123,.15);
     }
 
-    .select-wrapper::after {
+    .select-wrap { position: relative; }
+    .select-wrap::after {
       content: '';
       position: absolute;
-      right: 14px;
-      top: 50%;
+      right: 12px; top: 50%;
       transform: translateY(-50%);
-      width: 0;
-      height: 0;
       border-left: 5px solid transparent;
       border-right: 5px solid transparent;
-      border-top: 6px solid var(--text);
+      border-top: 6px solid var(--muted);
       pointer-events: none;
-      opacity: .5;
     }
 
     .form-note {
-      font-size: 13px;
-      color: rgba(26,31,46,.5);
+      font-size: 12px;
+      color: var(--muted);
+      opacity: .8;
     }
 
-    .counter-line {
-      font-size: 14px;
-      color: rgba(26,31,46,.6);
-      margin-top: 4px;
-    }
+    .counter-line { font-size: 13px; color: var(--muted); }
+    .counter-line strong { color: var(--green); font-weight: 700; }
 
-    .counter-line strong {
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    /* ── PHONE MOCKUP ── */
+    /* ─── PHONE MOCKUP ─── */
     .phone-wrap {
       display: flex;
       justify-content: center;
-      align-items: center;
     }
 
-    .phone-mockup {
-      width: 260px;
-      height: 520px;
+    .phone {
+      width: 258px;
+      flex-shrink: 0;
       background: #fff;
-      border-radius: 36px;
-      border: 8px solid var(--text);
-      box-shadow: 0 32px 80px rgba(26,31,46,.18), 0 4px 16px rgba(26,31,46,.08);
+      border-radius: 38px;
+      border: 7px solid var(--text);
+      box-shadow:
+        0 28px 72px rgba(26,31,46,.16),
+        0 4px 12px rgba(26,31,46,.06);
       position: relative;
       overflow: hidden;
-      flex-shrink: 0;
     }
 
     .phone-notch {
       position: absolute;
-      top: 10px;
-      left: 50%;
+      top: 10px; left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 22px;
+      width: 76px; height: 20px;
       background: var(--text);
-      border-radius: 14px;
+      border-radius: 12px;
       z-index: 2;
     }
 
     .phone-screen {
-      width: 100%;
-      height: 100%;
       background: var(--bg);
-      padding: 52px 14px 16px;
+      padding: 44px 13px 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      overflow: hidden;
+      gap: 9px;
+      min-height: 510px;
     }
 
-    .phone-header {
+    .phone-topbar {
       font-family: 'Fraunces', serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--text);
-      letter-spacing: -.2px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
     }
 
     .phone-card {
       background: #fff;
       border-radius: 10px;
-      padding: 10px 12px;
+      padding: 10px 11px;
       border: 1px solid var(--border);
+      box-shadow: 0 1px 4px rgba(26,31,46,.04);
     }
+
+    .phone-card.urgent {
+      border-left: 3px solid var(--urgency);
+    }
+
+    .phone-card-head {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .phone-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .phone-dot.green   { background: var(--green); }
+    .phone-dot.blue    { background: var(--urgency); }
 
     .phone-card-title {
       font-size: 11px;
       font-weight: 700;
       color: var(--text);
-      margin-bottom: 2px;
+      line-height: 1.3;
     }
 
     .phone-card-body {
       font-size: 10px;
-      color: rgba(26,31,46,.6);
-      line-height: 1.4;
+      color: var(--muted);
+      line-height: 1.45;
+      margin-bottom: 4px;
     }
 
     .phone-card-meta {
       font-size: 9px;
-      color: var(--green);
-      margin-top: 4px;
       font-weight: 600;
     }
+    .phone-card-meta.green { color: var(--green); }
+    .phone-card-meta.blue  { color: var(--urgency); }
 
     .phone-tag {
       display: inline-block;
@@ -421,259 +420,228 @@
       font-weight: 600;
       padding: 2px 7px;
       border-radius: 20px;
-      background: rgba(53,141,123,.12);
-      color: var(--green);
-      margin-top: 5px;
+      margin-top: 4px;
     }
+    .phone-tag.green { background: rgba(53,141,123,.12); color: var(--green); }
+    .phone-tag.blue  { background: rgba(91,141,184,.12); color: var(--urgency); }
 
-    .phone-divider {
-      height: 1px;
-      background: var(--border);
-    }
-
-    .phone-nav-bar {
+    .phone-nav {
       margin-top: auto;
       display: flex;
       justify-content: space-around;
       background: #fff;
       border-radius: 12px;
-      padding: 8px 0;
+      padding: 9px 0;
       border: 1px solid var(--border);
     }
-
-    .phone-nav-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--border);
-    }
-
+    .phone-nav-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--border); }
     .phone-nav-dot.active { background: var(--green); }
 
-    /* ── SECTION SHARED ── */
-    section { padding: 80px 0; }
-
-    .section-label {
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--green);
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 16px;
-      letter-spacing: -.3px;
-    }
-
-    .section-lead {
-      font-size: 17px;
-      color: rgba(26,31,46,.7);
-      max-width: 560px;
-      line-height: 1.65;
-    }
-
-    /* ── FEATURES GRID ── */
+    /* ─── FEATURES ─── */
     .features-section { background: #fff; }
 
-    .features-header { text-align: center; margin-bottom: 52px; }
-    .features-header .section-lead { margin: 0 auto; }
+    .features-head { text-align: center; margin-bottom: 48px; }
+    .features-head .section-lead { margin: 0 auto; }
 
     .features-grid {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 20px;
     }
-
-    @media (min-width: 600px) {
+    @media (min-width: 560px) {
       .features-grid { grid-template-columns: 1fr 1fr; }
     }
-
-    @media (min-width: 900px) {
-      .features-grid { grid-template-columns: 1fr 1fr 1fr; }
+    @media (min-width: 860px) {
+      .features-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
-    .feature-card {
-      background: var(--bg);
+    .feat-card {
+      background: #fff;
+      border: .5px solid var(--border);
       border-radius: var(--radius);
-      padding: 28px 24px;
-      border: 1px solid transparent;
-      transition: border-color .2s, transform .2s;
+      padding: 26px 22px;
+      box-shadow: 0 2px 8px rgba(26,31,46,.04);
+      transition: box-shadow .2s, transform .2s;
     }
-
-    .feature-card:hover {
-      border-color: var(--border);
+    .feat-card:hover {
+      box-shadow: 0 6px 20px rgba(26,31,46,.09);
       transform: translateY(-2px);
     }
 
-    .feature-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: rgba(53,141,123,.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 16px;
-      font-size: 20px;
+    .feat-icon {
+      font-size: 26px;
+      margin-bottom: 14px;
+      line-height: 1;
     }
 
-    .feature-card h3 {
-      font-size: 17px;
+    .feat-card h3 {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 7px;
       color: var(--text);
     }
 
-    .feature-card p {
+    .feat-card p {
       font-size: 14px;
-      color: rgba(26,31,46,.65);
+      color: var(--muted);
       line-height: 1.6;
     }
 
-    /* ── QUOTE SECTION ── */
+    /* ─── QUOTE ─── */
     .quote-section {
       background: var(--green);
       padding: 80px 0;
     }
 
     .quote-inner {
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
       text-align: center;
     }
 
     .quote-mark {
       font-family: 'Fraunces', serif;
-      font-size: 80px;
-      line-height: .5;
-      color: rgba(255,255,255,.25);
-      margin-bottom: 16px;
+      font-size: 72px;
+      line-height: .4;
+      color: rgba(255,255,255,.2);
       display: block;
+      margin-bottom: 20px;
     }
 
-    .quote-text {
+    blockquote.quote-text {
       font-family: 'Fraunces', serif;
-      font-size: clamp(20px, 3.5vw, 30px);
       font-style: italic;
       font-weight: 400;
+      font-size: clamp(18px, 3vw, 27px);
       color: #fff;
-      line-height: 1.5;
-      letter-spacing: -.2px;
+      line-height: 1.55;
+      letter-spacing: -.1px;
     }
 
-    /* ── BENEFITS ── */
-    .benefits-grid {
+    /* ─── BENEFITS ─── */
+    .benefits-section {}
+
+    .benefits-layout {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
-      margin-top: 52px;
+      gap: 48px;
+      margin-top: 48px;
+      align-items: start;
+    }
+    @media (min-width: 780px) {
+      .benefits-layout { grid-template-columns: 1fr 1fr; }
     }
 
-    @media (min-width: 720px) {
-      .benefits-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0 48px;
-      }
-    }
+    .benefit-list { display: flex; flex-direction: column; }
 
     .benefit-item {
       display: flex;
-      gap: 20px;
-      padding: 24px 0;
+      gap: 18px;
+      padding: 20px 0;
       border-bottom: 1px solid var(--border);
       align-items: flex-start;
     }
-
-    .benefit-item:last-child { border-bottom: none; }
+    .benefit-item:first-child { padding-top: 0; }
+    .benefit-item:last-child  { border-bottom: none; }
 
     .benefit-num {
       font-family: 'Fraunces', serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--green);
-      opacity: .6;
+      opacity: .7;
       flex-shrink: 0;
-      width: 28px;
+      width: 26px;
       padding-top: 1px;
     }
 
     .benefit-content h3 {
-      font-size: 17px;
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
       font-weight: 600;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+      color: var(--text);
     }
-
     .benefit-content p {
-      font-size: 14px;
-      color: rgba(26,31,46,.65);
+      font-size: 13px;
+      color: var(--muted);
       line-height: 1.55;
     }
 
-    /* ── TILMELD SECTION ── */
-    .tilmeld-section {
-      background: var(--green);
+    .benefits-quote {
+      background: rgba(53,141,123,.07);
+      border-left: 3px solid var(--green);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 28px 24px;
     }
 
-    .tilmeld-inner {
-      max-width: 680px;
+    .benefits-quote blockquote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: clamp(18px, 2.4vw, 24px);
+      color: var(--text);
+      line-height: 1.5;
+      font-weight: 400;
     }
 
-    .tilmeld-section .section-label { color: rgba(255,255,255,.65); }
-    .tilmeld-section .section-title { color: #fff; }
-    .tilmeld-section .section-lead { color: rgba(255,255,255,.8); }
+    .benefits-quote cite {
+      display: block;
+      margin-top: 16px;
+      font-style: normal;
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 600;
+    }
 
-    .tilmeld-section .field label { color: rgba(255,255,255,.9); }
+    /* ─── TILMELD ─── */
+    .tilmeld-section { background: var(--green); }
+
+    .tilmeld-inner { max-width: 660px; }
+
+    .tilmeld-section .section-eyebrow { color: rgba(255,255,255,.7); }
+    .tilmeld-section .section-title   { color: #fff; }
+    .tilmeld-section .section-lead    { color: rgba(255,255,255,.8); }
+    .tilmeld-section .field label     { color: rgba(255,255,255,.9); }
 
     .tilmeld-section .field input,
     .tilmeld-section .field select {
-      background: rgba(255,255,255,.15);
-      border-color: rgba(255,255,255,.25);
+      background: rgba(255,255,255,.18);
+      border-color: rgba(255,255,255,.28);
       color: #fff;
     }
-
-    .tilmeld-section .field input::placeholder { color: rgba(255,255,255,.5); }
-    .tilmeld-section .field select option { color: var(--text); background: #fff; }
-
+    .tilmeld-section .field input::placeholder { color: rgba(255,255,255,.45); }
+    .tilmeld-section .field select option      { color: var(--text); background: #fff; }
     .tilmeld-section .field input:focus,
     .tilmeld-section .field select:focus {
-      border-color: rgba(255,255,255,.6);
+      border-color: rgba(255,255,255,.65);
+      box-shadow: 0 0 0 3px rgba(255,255,255,.12);
     }
-
-    .tilmeld-section .select-wrapper::after { border-top-color: rgba(255,255,255,.6); }
-
-    .tilmeld-section .form-note { color: rgba(255,255,255,.55); }
-    .tilmeld-section .counter-line { color: rgba(255,255,255,.7); }
+    .tilmeld-section .select-wrap::after { border-top-color: rgba(255,255,255,.6); }
+    .tilmeld-section .form-note         { color: rgba(255,255,255,.55); opacity: 1; }
+    .tilmeld-section .counter-line      { color: rgba(255,255,255,.7); }
     .tilmeld-section .counter-line strong { color: #fff; }
 
     .success-msg {
       display: none;
       background: rgba(255,255,255,.15);
-      border: 1.5px solid rgba(255,255,255,.3);
+      border: 1.5px solid rgba(255,255,255,.28);
       border-radius: var(--radius);
-      padding: 24px;
+      padding: 28px 24px;
       color: #fff;
       text-align: center;
     }
-
-    .success-msg.visible { display: block; }
-
+    .success-msg.show { display: block; }
     .success-msg h3 {
-      font-size: 20px;
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
       margin-bottom: 8px;
       color: #fff;
     }
-
     .success-msg p { font-size: 15px; opacity: .85; }
 
-    /* ── DOWNLOAD SECTION ── */
-    .download-section {
-      background: #fff;
-    }
+    /* ─── DOWNLOAD ─── */
+    .download-section { background: #fff; }
 
     .download-grid {
       display: grid;
@@ -681,30 +649,8 @@
       gap: 48px;
       align-items: center;
     }
-
     @media (min-width: 720px) {
       .download-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    .qr-placeholder {
-      width: 148px;
-      height: 148px;
-      border-radius: var(--radius-sm);
-      background: var(--bg);
-      border: 2px dashed var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 8px;
-      color: rgba(26,31,46,.4);
-      font-size: 13px;
-      text-align: center;
-    }
-
-    .qr-icon {
-      font-size: 32px;
-      opacity: .4;
     }
 
     .download-side {
@@ -714,20 +660,35 @@
       gap: 20px;
     }
 
+    .qr-box {
+      width: 140px; height: 140px;
+      border-radius: var(--radius-sm);
+      background: var(--bg);
+      border: 2px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      opacity: .7;
+    }
+
     .web-link {
       font-size: 14px;
       color: var(--green);
       border-bottom: 1px solid rgba(53,141,123,.3);
       padding-bottom: 1px;
-      transition: border-color .2s;
+      transition: border-color .18s;
     }
-
     .web-link:hover { border-color: var(--green); }
 
-    /* ── FOOTER ── */
+    /* ─── FOOTER ─── */
     footer {
       background: var(--text);
-      padding: 48px 0;
+      padding: 44px 0;
     }
 
     .footer-inner {
@@ -741,79 +702,108 @@
     .footer-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
-
+    .footer-logo img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
     .footer-logo-text {
       font-family: 'Fraunces', serif;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 600;
       color: #fff;
     }
 
     .footer-links {
       display: flex;
-      gap: 24px;
+      gap: 22px;
       list-style: none;
       flex-wrap: wrap;
     }
-
     .footer-links a {
-      color: rgba(255,255,255,.5);
+      color: rgba(255,255,255,.45);
       font-size: 14px;
-      transition: color .2s;
+      transition: color .18s;
     }
-
     .footer-links a:hover { color: #fff; }
 
     .footer-copy {
       width: 100%;
-      font-size: 13px;
-      color: rgba(255,255,255,.3);
-      margin-top: 12px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      padding-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,.25);
+      margin-top: 10px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+
+    /* ─── LOGO SVG ─── */
+    .logo-svg {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    .logo-svg-sm {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAVIGATION ── -->
+<!-- ─── NAVIGATION ─── -->
 <nav>
   <div class="container">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="rgba(53,141,123,.1)"/>
-          <path d="M16 6L5 15H8V26H13V20H19V26H24V15H27L16 6Z" fill="#358D7B"/>
-          <path d="M16 13.5C14.6 12.2 12.5 12.5 12.5 14.5C12.5 16 14.5 17.8 16 19C17.5 17.8 19.5 16 19.5 14.5C19.5 12.5 17.4 12.2 16 13.5Z" fill="#fff"/>
+
+      <a href="/" class="nav-logo" aria-label="Hjemby forside">
+        <!-- Håndtegnet hus med hjerte/pin — inline SVG -->
+        <svg class="logo-svg" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Hus, sketchy stil -->
+          <path d="M40 8 C40 8 39 7.5 38 8.5 L10 32 C9 33 9.5 34 10.5 34 L16 34 L16 68 C16 69.1 16.9 70 18 70 L32 70 L32 52 L48 52 L48 70 L62 70 C63.1 70 64 69.1 64 68 L64 34 L69.5 34 C70.5 34 71 33 70 32 Z" fill="#358D7B" opacity=".92"/>
+          <!-- Skorsten -->
+          <rect x="52" y="14" width="8" height="14" rx="1.5" fill="#358D7B" opacity=".85"/>
+          <!-- Skraveringer for håndtegnet effekt -->
+          <line x1="22" y1="38" x2="58" y2="38" stroke="rgba(255,255,255,.12)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="20" y1="46" x2="60" y2="46" stroke="rgba(255,255,255,.10)" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="20" y1="54" x2="60" y2="54" stroke="rgba(255,255,255,.08)" stroke-width="1.5" stroke-linecap="round"/>
+          <!-- Hjerte/pin hvid -->
+          <path d="M40 28 C36.5 24.5 30 25.5 30 31.5 C30 36 34.5 40.5 40 45 C45.5 40.5 50 36 50 31.5 C50 25.5 43.5 24.5 40 28 Z" fill="white" opacity=".95"/>
+          <!-- Pin-spids -->
+          <path d="M40 45 L38 50 L40 48 L42 50 Z" fill="white" opacity=".95"/>
         </svg>
         <span class="nav-logo-text">hjemby</span>
         <span class="beta-pill">Beta</span>
       </a>
+
       <ul class="nav-links">
         <li><a href="#fordele">Fordele</a></li>
         <li><a href="#download">Download</a></li>
       </ul>
-      <div class="nav-right">
-        <a href="#tilmeld" class="btn btn-primary">Kom med</a>
-      </div>
+
+      <a href="#tilmeld" class="btn btn-green" style="font-size:14px; padding:9px 18px;">Kom med</a>
     </div>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- ─── HERO ─── -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
-      <div class="hero-left">
-        <span class="eyebrow">Nu i beta — vær med fra starten</span>
-        <h1>Lån <em>før</em> du køber.</h1>
-        <p class="hero-lead">Hjemby forbinder naboer, så du kan låne en boremaskine, få et ærligt råd om varmeanlægget eller finde ud af, hvem der kan anbefale en god håndværker — alt sammen tæt på dig.</p>
 
-        <div class="store-buttons">
+      <!-- Venstre -->
+      <div>
+        <span class="hero-eyebrow">Nu i beta — vær med fra starten</span>
+
+        <h1>Lån <em>før</em> du køber.</h1>
+
+        <p class="hero-lead">Hjemby forbinder naboer, så du kan låne en boremaskine, få et ærligt råd om varmeanlægget eller finde den bedste håndværker — alt sammen tæt på dig.</p>
+
+        <div class="store-row">
           <a href="#" class="store-btn" aria-label="Hent på App Store">
-            <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg width="18" height="22" viewBox="0 0 20 24" fill="none" aria-hidden="true">
               <path d="M16.5 12.6c0-3.2 2.6-4.7 2.7-4.8-1.5-2.1-3.7-2.4-4.5-2.4-1.9-.2-3.7 1.1-4.7 1.1-1 0-2.5-1.1-4.1-1.1C3.5 5.5 1 7.2 1 12c0 3.1 1.2 6.4 2.7 8.5.9 1.3 2 2.7 3.4 2.7 1.4-.1 1.9-.9 3.5-.9 1.7 0 2.1.9 3.6.9 1.5 0 2.5-1.3 3.4-2.6.6-.9 1.1-1.9 1.3-3-.1-.1-2.9-1.1-2.9-4.4 0-2.8 2.3-4.1 2.4-4.1l.1-.5z" fill="white"/>
               <path d="M13.5 3.1C14.3 2.1 14.8 1 14.7 0c-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.7-1.3z" fill="white"/>
             </svg>
@@ -823,11 +813,11 @@
             </span>
           </a>
           <a href="#" class="store-btn" aria-label="Hent på Google Play">
-            <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M1.2 0.4C0.9 0.7 0.7 1.2 0.7 1.8v20.4c0 .6.2 1.1.5 1.4l.1.1 11.4-11.4v-.3L1.2.4z" fill="#EA4335"/>
+            <svg width="20" height="22" viewBox="0 0 22 24" fill="none" aria-hidden="true">
+              <path d="M1.2.4C.9.7.7 1.2.7 1.8v20.4c0 .6.2 1.1.5 1.4l.1.1 11.4-11.4v-.3L1.2.4z" fill="#EA4335"/>
               <path d="M16.4 16.1l-3.8-3.8V11.9l3.8-3.8.1.1 4.5 2.6c1.3.7 1.3 1.9 0 2.6l-4.5 2.6-.1.1z" fill="#FBBC04"/>
               <path d="M16.5 16l-3.9-3.9-11.4 11.4c.4.5 1.1.5 1.9.1l13.4-7.7" fill="#34A853"/>
-              <path d="M16.5 8l-13.4-7.7C2.3.1 1.6.2 1.2.7l11.4 11.4L16.5 8z" fill="#4285F4"/>
+              <path d="M16.5 8L3.1.3C2.3-.1 1.6.2 1.2.7l11.4 11.4L16.5 8z" fill="#4285F4"/>
             </svg>
             <span class="store-btn-label">
               <span class="store-btn-sub">Hent på</span>
@@ -839,13 +829,13 @@
         <form class="signup-form" id="hero-form" novalidate>
           <div class="form-row">
             <div class="field">
-              <label for="hero-email">E-mail</label>
-              <input type="email" id="hero-email" name="email" placeholder="dit@navn.dk" required />
+              <label for="h-email">E-mail</label>
+              <input type="email" id="h-email" name="email" placeholder="dit@navn.dk" required />
             </div>
             <div class="field">
-              <label for="hero-area">Dit område</label>
-              <div class="select-wrapper">
-                <select id="hero-area" name="area" required>
+              <label for="h-area">Dit område</label>
+              <div class="select-wrap">
+                <select id="h-area" name="area" required>
                   <option value="" disabled selected>Vælg område…</option>
                   <option>Storkøbenhavn</option>
                   <option>Nordsjælland</option>
@@ -862,39 +852,55 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary" style="align-self:flex-start; font-size:16px; padding:13px 26px;">
+          <button type="submit" class="btn btn-green" style="align-self:flex-start; padding:13px 24px; font-size:15px;">
             Kom med fra starten →
           </button>
           <p class="form-note">Ingen spam. Kun besked når Hjemby åbner i dit område.</p>
-          <p class="counter-line" id="hero-counter">Allerede <strong id="hero-count">…</strong> på venteliste</p>
+          <p class="counter-line">Allerede <strong id="hero-count">…</strong> på venteliste</p>
         </form>
       </div>
 
-      <div class="hero-right phone-wrap">
-        <div class="phone-mockup">
+      <!-- Højre — telefon mockup -->
+      <div class="phone-wrap">
+        <div class="phone">
           <div class="phone-notch"></div>
           <div class="phone-screen">
-            <div class="phone-header">Hjemby · Nabolaget</div>
-            <div class="phone-card">
-              <div class="phone-card-title">Boremaskine til lån 🔧</div>
-              <div class="phone-card-body">Har en Bosch liggende — kan lånes ud i weekenden. Hent selv i opgangen.</div>
-              <div class="phone-card-meta">Anna · 3 min siden · 50 m væk</div>
-              <span class="phone-tag">Lån &amp; del</span>
+            <div class="phone-topbar">Hjemby · Nabolaget 🏡</div>
+
+            <!-- Urgency-kort (blå) -->
+            <div class="phone-card urgent">
+              <div class="phone-card-head">
+                <div class="phone-dot blue"></div>
+                <div class="phone-card-title">Nabomøde i morgen kl. 19</div>
+              </div>
+              <div class="phone-card-body">Fællesrum, 2. sal. Dagsorden: støjregler og cykelparkering.</div>
+              <div class="phone-card-meta blue">Bestyrelsen · 1 t siden</div>
+              <span class="phone-tag blue">Besked</span>
             </div>
+
+            <!-- Grønt lånekort -->
             <div class="phone-card">
-              <div class="phone-card-title">Spørgsmål om varmen</div>
-              <div class="phone-card-body">Er der andre der har kold radiator i badeværelset? Termostat skiftet 2x…</div>
-              <div class="phone-card-meta">Lars · 18 min siden · 120 m væk</div>
-              <span class="phone-tag">Råd &amp; svar</span>
+              <div class="phone-card-head">
+                <div class="phone-dot green"></div>
+                <div class="phone-card-title">Boremaskine til lån 🔧</div>
+              </div>
+              <div class="phone-card-body">Bosch liggende — kan lånes i weekenden. Hent i opgangen.</div>
+              <div class="phone-card-meta green">Anna · 3 min · 50 m væk</div>
+              <span class="phone-tag green">Lån &amp; del</span>
             </div>
+
+            <!-- Råd-kort -->
             <div class="phone-card">
-              <div class="phone-card-title">Kan anbefale VVS'er ✅</div>
-              <div class="phone-card-body">Pedersen VVS var super — hurtige, rimelige priser og ryddede op efter.</div>
-              <div class="phone-card-meta">Maria · 2 t siden · 80 m væk</div>
-              <span class="phone-tag">Anbefalinger</span>
+              <div class="phone-card-head">
+                <div class="phone-dot green"></div>
+                <div class="phone-card-title">Kan anbefale VVS'er ✅</div>
+              </div>
+              <div class="phone-card-body">Pedersen VVS var super — hurtige og ryddede op efter sig.</div>
+              <div class="phone-card-meta green">Maria · 2 t · 80 m væk</div>
+              <span class="phone-tag green">Anbefalinger</span>
             </div>
-            <div class="phone-divider"></div>
-            <div class="phone-nav-bar">
+
+            <div class="phone-nav">
               <div class="phone-nav-dot active"></div>
               <div class="phone-nav-dot"></div>
               <div class="phone-nav-dot"></div>
@@ -903,127 +909,140 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ── FEATURES ── -->
+<!-- ─── FEATURES ─── -->
 <section class="features-section" id="fordele">
   <div class="container">
-    <div class="features-header">
-      <div class="section-label">Hvad kan Hjemby</div>
+    <div class="features-head">
+      <div class="section-eyebrow">Hvad kan Hjemby</div>
       <h2 class="section-title">Alt hvad nabolaget kan hjælpe med</h2>
       <p class="section-lead">En app bygget til dem der bor tæt på hinanden — uanset om det er etageejendom, rækkehus eller villa.</p>
     </div>
     <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🔧</div>
+      <div class="feat-card">
+        <div class="feat-icon">🔧</div>
         <h3>Lån og del</h3>
         <p>Boremaskinen, stigen, traileren — lån af en nabo frem for at købe noget du bruger én gang.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">💬</div>
+      <div class="feat-card">
+        <div class="feat-icon">💬</div>
         <h3>Svar du ikke kan google</h3>
-        <p>Kender nogen en god VVS'er? Er det normalt med støj fra den pumpe? Nabolaget ved det.</p>
+        <p>Kender nogen en god VVS'er? Er det normalt med støj fra pumpen? Nabolaget ved det.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
+      <div class="feat-card">
+        <div class="feat-icon">🤝</div>
         <h3>Hjælp i hverdagen</h3>
         <p>Pakken der skal hentes, katten der skal passes, sofaen der skal bæres op ad trappen.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">⭐</div>
+      <div class="feat-card">
+        <div class="feat-icon">⭐</div>
         <h3>Lokale anbefalinger</h3>
-        <p>Få anbefalinger på håndværkere, butikker og services fra naboer der faktisk har prøvet det.</p>
+        <p>Anbefalinger på håndværkere og butikker fra naboer der faktisk har prøvet dem.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🏠</div>
+      <div class="feat-card">
+        <div class="feat-icon">🏠</div>
         <h3>For alle boligtyper</h3>
         <p>Etageejendom, andelsbolig, ejerlejlighed, rækkehus eller villa — Hjemby virker for alle.</p>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔒</div>
+      <div class="feat-card">
+        <div class="feat-icon">🔒</div>
         <h3>Privat og trygt</h3>
-        <p>Kun verificerede naboer i dit nærområde. Du bestemmer selv hvad du deler og med hvem.</p>
+        <p>Kun verificerede naboer i dit nærområde. Du bestemmer hvad du deler og med hvem.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── QUOTE ── -->
+<!-- ─── QUOTE ─── -->
 <section class="quote-section">
   <div class="container">
     <div class="quote-inner">
       <span class="quote-mark">"</span>
-      <p class="quote-text">Nabolagets praktiske hjælpe-lag: lån ting, spørg hurtigt og få små problemer løst tæt på dig — med boligforeningen som en tryg base, ikke som en begrænsning.</p>
+      <blockquote class="quote-text">
+        Nabolagets praktiske hjælpe-lag: lån ting, spørg hurtigt og få små problemer løst tæt på dig — med boligforeningen som en tryg base, ikke som en begrænsning.
+      </blockquote>
     </div>
   </div>
 </section>
 
-<!-- ── BENEFITS ── -->
+<!-- ─── BENEFITS ─── -->
 <section id="benefits">
   <div class="container">
-    <div class="section-label">Konkrete eksempler</div>
+    <div class="section-eyebrow">Konkrete eksempler</div>
     <h2 class="section-title">Hvad naboer hjælper med</h2>
-    <p class="section-lead">Hjemby er bygget til de daglige ting — dem der er for små til en service, men for store til at håndtere alene.</p>
-    <div class="benefits-grid">
-      <div class="benefit-item">
-        <span class="benefit-num">01</span>
-        <div class="benefit-content">
-          <h3>Boremaskine, trailer og stige</h3>
-          <p>Lån det du har brug for af en nabo, frem for at købe noget du bruger én gang om året.</p>
+    <p class="section-lead">De daglige ting — for små til en service, men for store til at håndtere alene.</p>
+
+    <div class="benefits-layout">
+      <div class="benefit-list">
+        <div class="benefit-item">
+          <span class="benefit-num">01</span>
+          <div class="benefit-content">
+            <h3>Boremaskine, trailer og stige</h3>
+            <p>Lån det du har brug for af en nabo, frem for at købe noget du bruger én gang om året.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-num">02</span>
+          <div class="benefit-content">
+            <h3>Pakken, katten, sofaen</h3>
+            <p>Få nogen til at hente din pakke, passe katten i ferien eller hjælpe med tungt møbel.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-num">03</span>
+          <div class="benefit-content">
+            <h3>Rådet om håndværkeren</h3>
+            <p>Find en anbefalet tømrer, elektriker eller VVS'er via naboer der allerede har brugt dem.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-num">04</span>
+          <div class="benefit-content">
+            <h3>Svaret om varmen og støjen</h3>
+            <p>Normalt med kulde fra vinduerne? Hvad gør man ved støj fra rørene? Nabolaget ved det.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <span class="benefit-num">05</span>
+          <div class="benefit-content">
+            <h3>Rabatter hos lokale butikker</h3>
+            <p>Lokale forhandlere og servicevirksomheder tilbyder fordele direkte til naboerne.</p>
+          </div>
         </div>
       </div>
-      <div class="benefit-item">
-        <span class="benefit-num">02</span>
-        <div class="benefit-content">
-          <h3>Pakken, katten, sofaen</h3>
-          <p>Få nogen til at hente din pakke, passe katten i ferien eller hjælpe med at bære tungt møbel.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-num">03</span>
-        <div class="benefit-content">
-          <h3>Rådet om håndværkeren</h3>
-          <p>Find en anbefalet tømrer, elektriker eller VVS'er via naboer der allerede har brugt dem.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-num">04</span>
-        <div class="benefit-content">
-          <h3>Svaret om varmen og støjen</h3>
-          <p>Er det normalt med kulde fra de vinduer? Hvad gør man ved støjen fra rørene? Nabolaget ved det.</p>
-        </div>
-      </div>
-      <div class="benefit-item">
-        <span class="benefit-num">05</span>
-        <div class="benefit-content">
-          <h3>Rabatter hos lokale butikker</h3>
-          <p>Lokale forhandlere og servicevirksomheder tilbyder fordele direkte til dig i nabolaget.</p>
-        </div>
+
+      <div class="benefits-quote">
+        <blockquote>
+          "Vi lånte aldrig noget af vores naboer — ikke fordi vi ikke ville, men fordi vi aldrig rigtig talte sammen. Hjemby ændrede det."
+        </blockquote>
+        <cite>— Beta-bruger, Storkøbenhavn</cite>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── TILMELD ── -->
+<!-- ─── TILMELD ─── -->
 <section class="tilmeld-section" id="tilmeld">
   <div class="container">
     <div class="tilmeld-inner">
-      <div class="section-label">Beta-adgang</div>
+      <div class="section-eyebrow">Beta-adgang</div>
       <h2 class="section-title">Vær med fra starten.</h2>
-      <p class="section-lead" style="margin-bottom:40px;">Tilmeld dig ventelisten — vi giver dig besked når Hjemby åbner i dit område. Ingen spam, kun det vigtigste.</p>
+      <p class="section-lead" style="margin-bottom:36px;">Tilmeld dig ventelisten — vi giver dig besked når Hjemby åbner i dit område.</p>
 
       <form class="signup-form" id="tilmeld-form" novalidate>
         <div class="form-row">
           <div class="field">
-            <label for="tilmeld-email">E-mail</label>
-            <input type="email" id="tilmeld-email" name="email" placeholder="dit@navn.dk" required />
+            <label for="t-email">E-mail</label>
+            <input type="email" id="t-email" name="email" placeholder="dit@navn.dk" required />
           </div>
           <div class="field">
-            <label for="tilmeld-area">Dit område</label>
-            <div class="select-wrapper">
-              <select id="tilmeld-area" name="area" required>
+            <label for="t-area">Dit område</label>
+            <div class="select-wrap">
+              <select id="t-area" name="area" required>
                 <option value="" disabled selected>Vælg område…</option>
                 <option>Storkøbenhavn</option>
                 <option>Nordsjælland</option>
@@ -1040,37 +1059,40 @@
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-white" style="align-self:flex-start; font-size:16px; padding:13px 26px;">
+        <button type="submit" class="btn btn-white" style="align-self:flex-start; padding:13px 24px; font-size:15px;">
           Kom med fra starten →
         </button>
         <p class="form-note">Ingen spam. Kun besked når Hjemby åbner i dit område.</p>
-        <p class="counter-line" id="tilmeld-counter">Allerede <strong id="tilmeld-count">…</strong> på venteliste</p>
+        <p class="counter-line">Allerede <strong id="tilmeld-count">…</strong> på venteliste</p>
       </form>
 
       <div class="success-msg" id="success-msg">
         <h3>Du er med! 🎉</h3>
-        <p>Vi sender dig en mail, når Hjemby åbner i dit område. Glæder os til at byde dig velkommen i nabolaget.</p>
+        <p>Vi sender dig en mail når Hjemby åbner i dit område. Glæder os til at byde dig velkommen.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── DOWNLOAD ── -->
+<!-- ─── DOWNLOAD ─── -->
 <section class="download-section" id="download">
   <div class="container">
     <div class="download-grid">
       <div>
-        <div class="section-label">Download</div>
+        <div class="section-eyebrow">Download</div>
         <h2 class="section-title">Hent Hjemby nu</h2>
         <p class="section-lead">Tilgængelig til iPhone og Android. Scan QR-koden eller hent direkte fra din app-butik.</p>
-        <div style="margin-top: 32px;">
-          <a href="https://hjemby-nabo-liv.base44.app" class="web-link" target="_blank" rel="noopener">Eller åbn webversionen her →</a>
+        <div style="margin-top:28px;">
+          <a href="https://hjemby-nabo-liv.base44.app" class="web-link" target="_blank" rel="noopener">
+            Eller åbn webversionen her →
+          </a>
         </div>
       </div>
+
       <div class="download-side">
-        <div class="store-buttons">
+        <div class="store-row">
           <a href="#" class="store-btn" aria-label="Hent på App Store">
-            <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg width="18" height="22" viewBox="0 0 20 24" fill="none" aria-hidden="true">
               <path d="M16.5 12.6c0-3.2 2.6-4.7 2.7-4.8-1.5-2.1-3.7-2.4-4.5-2.4-1.9-.2-3.7 1.1-4.7 1.1-1 0-2.5-1.1-4.1-1.1C3.5 5.5 1 7.2 1 12c0 3.1 1.2 6.4 2.7 8.5.9 1.3 2 2.7 3.4 2.7 1.4-.1 1.9-.9 3.5-.9 1.7 0 2.1.9 3.6.9 1.5 0 2.5-1.3 3.4-2.6.6-.9 1.1-1.9 1.3-3-.1-.1-2.9-1.1-2.9-4.4 0-2.8 2.3-4.1 2.4-4.1l.1-.5z" fill="white"/>
               <path d="M13.5 3.1C14.3 2.1 14.8 1 14.7 0c-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.8-1 2.9 1 .1 2.1-.6 2.7-1.3z" fill="white"/>
             </svg>
@@ -1080,11 +1102,11 @@
             </span>
           </a>
           <a href="#" class="store-btn" aria-label="Hent på Google Play">
-            <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M1.2 0.4C0.9 0.7 0.7 1.2 0.7 1.8v20.4c0 .6.2 1.1.5 1.4l.1.1 11.4-11.4v-.3L1.2.4z" fill="#EA4335"/>
+            <svg width="20" height="22" viewBox="0 0 22 24" fill="none" aria-hidden="true">
+              <path d="M1.2.4C.9.7.7 1.2.7 1.8v20.4c0 .6.2 1.1.5 1.4l.1.1 11.4-11.4v-.3L1.2.4z" fill="#EA4335"/>
               <path d="M16.4 16.1l-3.8-3.8V11.9l3.8-3.8.1.1 4.5 2.6c1.3.7 1.3 1.9 0 2.6l-4.5 2.6-.1.1z" fill="#FBBC04"/>
               <path d="M16.5 16l-3.9-3.9-11.4 11.4c.4.5 1.1.5 1.9.1l13.4-7.7" fill="#34A853"/>
-              <path d="M16.5 8l-13.4-7.7C2.3.1 1.6.2 1.2.7l11.4 11.4L16.5 8z" fill="#4285F4"/>
+              <path d="M16.5 8L3.1.3C2.3-.1 1.6.2 1.2.7l11.4 11.4L16.5 8z" fill="#4285F4"/>
             </svg>
             <span class="store-btn-label">
               <span class="store-btn-sub">Hent på</span>
@@ -1092,8 +1114,8 @@
             </span>
           </a>
         </div>
-        <div class="qr-placeholder">
-          <span class="qr-icon">⬛</span>
+        <div class="qr-box">
+          <span style="font-size:28px; opacity:.4;">⬛</span>
           <span>QR-kode<br/>kommer snart</span>
         </div>
       </div>
@@ -1101,122 +1123,106 @@
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ─── FOOTER ─── -->
 <footer>
   <div class="container">
     <div class="footer-inner">
       <div class="footer-logo">
-        <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="32" height="32" rx="8" fill="rgba(53,141,123,.2)"/>
-          <path d="M16 6L5 15H8V26H13V20H19V26H24V15H27L16 6Z" fill="#358D7B"/>
-          <path d="M16 13.5C14.6 12.2 12.5 12.5 12.5 14.5C12.5 16 14.5 17.8 16 19C17.5 17.8 19.5 16 19.5 14.5C19.5 12.5 17.4 12.2 16 13.5Z" fill="#fff"/>
+        <svg class="logo-svg-sm" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M40 8 C40 8 39 7.5 38 8.5 L10 32 C9 33 9.5 34 10.5 34 L16 34 L16 68 C16 69.1 16.9 70 18 70 L32 70 L32 52 L48 52 L48 70 L62 70 C63.1 70 64 69.1 64 68 L64 34 L69.5 34 C70.5 34 71 33 70 32 Z" fill="#358D7B" opacity=".9"/>
+          <rect x="52" y="14" width="8" height="14" rx="1.5" fill="#358D7B" opacity=".8"/>
+          <path d="M40 28 C36.5 24.5 30 25.5 30 31.5 C30 36 34.5 40.5 40 45 C45.5 40.5 50 36 50 31.5 C50 25.5 43.5 24.5 40 28 Z" fill="white" opacity=".95"/>
+          <path d="M40 45 L38 50 L40 48 L42 50 Z" fill="white" opacity=".95"/>
         </svg>
         <span class="footer-logo-text">hjemby</span>
       </div>
+
       <ul class="footer-links">
         <li><a href="#">Privatlivspolitik</a></li>
         <li><a href="#tilmeld">Tilmeld dig</a></li>
         <li><a href="https://hjemby-nabo-liv.base44.app" target="_blank" rel="noopener">Webversion</a></li>
       </ul>
+
       <p class="footer-copy">© 2026 Hjemby. Skabt med omtanke for naboer i Danmark.</p>
     </div>
   </div>
 </footer>
 
 <script>
-  const COUNTER_URL = 'https://api.counterapi.dev/v1/hjemby/signups';
-  const FORMSPREE_URL = 'https://formspree.io/f/XXXXXXXX';
+  const COUNTER_URL  = 'https://api.counterapi.dev/v1/hjemby/signups';
+  const FORMSPREE    = 'https://formspree.io/f/XXXXXXXX';
 
   async function fetchCount() {
     try {
-      const res = await fetch(COUNTER_URL);
-      if (!res.ok) return null;
-      const data = await res.json();
-      return (data.count || 0) + 47;
-    } catch {
-      return null;
-    }
+      const r = await fetch(COUNTER_URL);
+      if (!r.ok) return null;
+      const d = await r.json();
+      return (d.count || 0) + 47;
+    } catch { return null; }
   }
 
   async function incrementCount() {
     try {
-      const res = await fetch(COUNTER_URL + '/up');
-      if (!res.ok) return null;
-      const data = await res.json();
-      return (data.count || 0) + 47;
-    } catch {
-      return null;
-    }
+      const r = await fetch(COUNTER_URL + '/up');
+      if (!r.ok) return null;
+      const d = await r.json();
+      return (d.count || 0) + 47;
+    } catch { return null; }
   }
 
-  function updateCounters(n) {
+  function setCounters(n) {
     if (n === null) return;
-    const formatted = n.toLocaleString('da-DK');
-    document.getElementById('hero-count').textContent = formatted;
-    document.getElementById('tilmeld-count').textContent = formatted;
+    const s = n.toLocaleString('da-DK');
+    document.getElementById('hero-count').textContent    = s;
+    document.getElementById('tilmeld-count').textContent = s;
   }
 
-  fetchCount().then(updateCounters);
+  fetchCount().then(setCounters);
 
-  async function submitForm(email, area, isHero) {
+  async function handleSubmit(email, area, isHero) {
     try {
-      await fetch(FORMSPREE_URL, {
+      await fetch(FORMSPREE, {
         method: 'POST',
         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, area, _subject: 'Ny tilmelding til Hjemby beta' })
       });
     } catch (_) {}
 
-    const newCount = await incrementCount();
-    updateCounters(newCount);
+    const n = await incrementCount();
+    setCounters(n);
 
     if (isHero) {
-      const btn = document.querySelector('#hero-form button[type="submit"]');
-      btn.disabled = true;
+      const btn = document.querySelector('#hero-form button[type=submit]');
       btn.textContent = 'Du er med! ✓';
-      document.getElementById('hero-email').value = '';
-      document.getElementById('hero-area').value = '';
-      setTimeout(() => {
-        btn.disabled = false;
-        btn.textContent = 'Kom med fra starten →';
-      }, 4000);
+      btn.disabled = true;
+      document.getElementById('h-email').value = '';
+      document.getElementById('h-area').value  = '';
+      setTimeout(() => { btn.disabled = false; btn.textContent = 'Kom med fra starten →'; }, 4000);
     } else {
       document.getElementById('tilmeld-form').style.display = 'none';
-      document.getElementById('success-msg').classList.add('visible');
+      document.getElementById('success-msg').classList.add('show');
     }
   }
 
-  document.getElementById('hero-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('[name="email"]').value.trim();
-    const area = this.querySelector('[name="area"]').value;
-    if (!email || !area) return;
-    const btn = this.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sender…';
-    submitForm(email, area, true);
-  });
-
-  document.getElementById('tilmeld-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = this.querySelector('[name="email"]').value.trim();
-    const area = this.querySelector('[name="area"]').value;
-    if (!email || !area) return;
-    const btn = this.querySelector('button[type="submit"]');
-    btn.disabled = true;
-    btn.textContent = 'Sender…';
-    submitForm(email, area, false);
+  ['hero-form', 'tilmeld-form'].forEach(function(id) {
+    document.getElementById(id).addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('[name=email]').value.trim();
+      const area  = this.querySelector('[name=area]').value;
+      if (!email || !area) return;
+      const btn = this.querySelector('button[type=submit]');
+      btn.disabled = true;
+      btn.textContent = 'Sender…';
+      handleSubmit(email, area, id === 'hero-form');
+    });
   });
 
   document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
-      const id = this.getAttribute('href');
-      if (id === '#') return;
-      const target = document.querySelector(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      const t = this.getAttribute('href');
+      if (t === '#') return;
+      const el = document.querySelector(t);
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
 </script>
