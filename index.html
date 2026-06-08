@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hjemby — Din nabo-app</title>
   <meta name="description" content="Hjemby forbinder naboer. Lån ting, få råd og hjælp tæt på dig." />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;1,9..144,400&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,7 +35,7 @@
     }
 
     h1, h2, h3 {
-      font-family: 'Fraunces', serif;
+      font-family: 'Nunito', sans-serif;
       line-height: 1.15;
     }
 
@@ -50,96 +49,13 @@
       padding: 0 20px;
     }
 
-    /* ─── NAV ─── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: rgba(245,241,233,.93);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--border);
+    .hero-logo {
+      margin-bottom: 24px;
     }
 
-    .nav-inner {
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      flex-shrink: 0;
-    }
-
-    .nav-logo img.logo-mark {
-      width: 36px;
-      height: 36px;
-      object-fit: contain;
-    }
-
-    .nav-logo-text {
-      font-family: 'Fraunces', serif;
-      font-size: 21px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -.3px;
-    }
-
-    .beta-pill {
-      background: var(--amber);
-      color: #fff;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .4px;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 20px;
-      line-height: 1.6;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--muted);
-      transition: color .18s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 600;
-      padding: 10px 18px;
-      border-radius: var(--radius-sm);
-      border: none;
-      cursor: pointer;
-      transition: opacity .18s, transform .1s;
-      white-space: nowrap;
-      line-height: 1;
-      text-decoration: none;
-    }
-
-    .btn:active { transform: scale(.97); }
-    .btn-green { background: var(--green); color: #fff; font-size: 14px; }
-    .btn-green:hover { background: var(--green-dark); }
-
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
+    .hero-logo img {
+      height: 80px;
+      width: auto;
     }
 
     /* ─── SECTIONS ─── */
@@ -155,9 +71,9 @@
     }
 
     .section-title {
-      font-family: 'Fraunces', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: clamp(26px, 3.8vw, 40px);
-      font-weight: 600;
+      font-weight: 800;
       color: var(--text);
       margin-bottom: 14px;
       letter-spacing: -.3px;
@@ -235,12 +151,16 @@
     }
 
     .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(38px, 5.5vw, 62px);
-      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      font-size: 48px;
+      font-weight: 900;
       color: var(--text);
       letter-spacing: -.5px;
       margin-bottom: 18px;
+    }
+
+    @media (min-width: 860px) {
+      .hero h1 { font-size: 72px; }
     }
 
     .hero h1 em {
@@ -297,7 +217,6 @@
     }
 
     .phone-topbar {
-      font-family: 'Fraunces', serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--text);
@@ -442,7 +361,7 @@
     .feat-icon { font-size: 26px; margin-bottom: 14px; line-height: 1; }
 
     .feat-card h3 {
-      font-family: 'Fraunces', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 7px;
@@ -457,7 +376,6 @@
     .quote-inner { max-width: 760px; margin: 0 auto; text-align: center; }
 
     .quote-mark {
-      font-family: 'Fraunces', serif;
       font-size: 72px;
       line-height: .4;
       color: rgba(255,255,255,.2);
@@ -466,9 +384,6 @@
     }
 
     .quote-text {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 400;
       font-size: clamp(19px, 3vw, 28px);
       color: #fff;
       line-height: 1.55;
@@ -499,7 +414,7 @@
     .benefit-item:last-child  { border-bottom: none; }
 
     .benefit-num {
-      font-family: 'Fraunces', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--green);
@@ -510,7 +425,7 @@
     }
 
     .benefit-content h3 {
-      font-family: 'Fraunces', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: 16px;
       font-weight: 600;
       margin-bottom: 4px;
@@ -525,9 +440,6 @@
     }
 
     .benefits-aside blockquote {
-      font-family: 'Fraunces', serif;
-      font-style: italic;
-      font-weight: 400;
       font-size: clamp(20px, 2.6vw, 28px);
       color: var(--text);
       line-height: 1.5;
@@ -636,7 +548,7 @@
     }
 
     .footer-logo-text {
-      font-family: 'Fraunces', serif;
+      font-family: 'Nunito', sans-serif;
       font-size: 19px;
       font-weight: 600;
       color: #fff;
@@ -670,32 +582,16 @@
 <body>
 
 
-<!-- ─── NAVIGATION ─── -->
-<nav>
-  <div class="container">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Hjemby forside">
-        <img src="logo.png" alt="Hjemby logo" height="36" style="width:auto;" />
-        <span class="nav-logo-text">hjemby</span>
-        <span class="beta-pill">Beta</span>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#fordele">Fordele</a></li>
-        <li><a href="#download">Download</a></li>
-      </ul>
-
-      <a href="#download" class="btn btn-green">Hent appen</a>
-    </div>
-  </div>
-</nav>
-
 <!-- ─── HERO ─── -->
 <section class="hero">
   <div class="container">
     <div class="hero-grid">
 
       <div>
+        <div class="hero-logo">
+          <img src="logo.png" alt="Hjemby" />
+        </div>
+
         <span class="hero-eyebrow-pill">Nu i beta — vær med fra starten</span>
 
         <h1>Lån <em>før</em> du køber.</h1>
