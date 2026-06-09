@@ -330,49 +330,38 @@
     .phone-nav-dot.active { background: var(--green); }
 
     /* ─── FEATURES ─── */
-    .features-section { background: #fff; }
+    .features-section { background: var(--bg); }
 
     .features-head {
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 52px;
     }
 
     .features-head .section-lead { margin: 0 auto; }
 
-    .features-grid {
+    .feat-list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 18px;
+      gap: 36px 60px;
     }
 
-    @media (min-width: 560px) { .features-grid { grid-template-columns: 1fr 1fr; } }
-    @media (min-width: 860px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 640px) { .feat-list { grid-template-columns: 1fr 1fr; } }
 
-    .feat-card {
-      background: #fff;
-      border: .5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 26px 22px;
-      box-shadow: 0 2px 10px rgba(26,31,46,.05);
-      transition: box-shadow .2s, transform .2s;
-    }
+    .feat-item {}
 
-    .feat-card:hover {
-      box-shadow: 0 8px 24px rgba(26,31,46,.1);
-      transform: translateY(-2px);
-    }
-
-    .feat-icon { font-size: 26px; margin-bottom: 14px; line-height: 1; }
-
-    .feat-card h3 {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 7px;
+    .feat-item-title {
+      font-size: 17px;
+      font-weight: 700;
       color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .feat-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .feat-item-icon { font-size: 20px; line-height: 1; }
+
+    .feat-item p { font-size: 15px; color: var(--muted); line-height: 1.6; padding-left: 28px; }
 
     /* ─── QUOTE ─── */
     .quote-section { background: var(--green); padding: 88px 0; }
@@ -701,36 +690,30 @@
       <h2 class="section-title">Alt muligt. Hver dag.</h2>
       <p class="section-lead">En app bygget til dem der bor tæt på hinanden.</p>
     </div>
-    <div class="features-grid">
-      <div class="feat-card">
-        <div class="feat-icon">🔧</div>
-        <h3>Lån og del</h3>
-        <p>Boremaskinen, stigen, traileren - lån af en nabo frem for at købe noget du bruger én gang.</p>
+    <div class="feat-list">
+      <div class="feat-item">
+        <div class="feat-item-title"><span class="feat-item-icon">🔧</span> Lån og del</div>
+        <p>Boremaskinen, traileren, stigen. Lån af en nabo i stedet for at købe nyt.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">💬</div>
-        <h3>Svar du ikke kan google</h3>
+      <div class="feat-item">
+        <div class="feat-item-title"><span class="feat-item-icon">💬</span> Svar du ikke kan google</div>
         <p>Kender nogen en god VVS'er? Er støjen fra pumpen normal? Nabolaget ved det.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">🤝</div>
-        <h3>Hjælp i hverdagen</h3>
-        <p>Pakken der skal hentes, katten der skal passes, sofaen der skal bæres op ad trappen.</p>
+      <div class="feat-item">
+        <div class="feat-item-title"><span class="feat-item-icon">🌿</span> Hjælp i hverdagen</div>
+        <p>Pakken der skal hentes, katten der skal passes, sofaen der skal bæres op.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">⭐</div>
-        <h3>Lokale anbefalinger</h3>
-        <p>Anbefalinger på håndværkere og butikker fra naboer der faktisk har prøvet dem.</p>
+      <div class="feat-item">
+        <div class="feat-item-title"><span class="feat-item-icon">⭐</span> Lokale anbefalinger</div>
+        <p>Håndværkere og butikker anbefalet af naboer der faktisk har prøvet dem.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">🏠</div>
-        <h3>For alle boligtyper</h3>
-        <p>Etageejendom, andelsbolig, ejerlejlighed, rækkehus eller villa - Hjemby virker for alle.</p>
+      <div class="feat-item">
+        <div class="feat-item-title"><span class="feat-item-icon">🏘️</span> For alle boligtyper</div>
+        <p>Etageejendom, villa, rækkehus. Hjemby tilpasser sig din adresse.</p>
       </div>
-      <div class="feat-card">
-        <div class="feat-icon">🔒</div>
-        <h3>Privat og trygt</h3>
-        <p>Kun verificerede naboer i dit nærområde. Du bestemmer hvad du deler og med hvem.</p>
+      <div class="feat-item">
+        <div class="feat-item-title"><span class="feat-item-icon">🔒</span> Privat og trygt</div>
+        <p>Du bestemmer hvad du deler og med hvem. Ingen fuld adresse synlig.</p>
       </div>
     </div>
   </div>
