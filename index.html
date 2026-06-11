@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hjemby - Din nabo-app</title>
-  <meta name="description" content="Hjemby hjælper dig med at komme i kontakt med naboerne. Lån ting, få råd og hjælp tæt på dig." />
+
+  <!-- Primær SEO -->
+  <title>Hjemby - Nabo-appen der hjælper dig med at låne, spørge og dele</title>
+  <meta name="description" content="Hjemby er appen der forbinder dig med naboerne. Lån en boremaskine, få en anbefaling, spørg om varmen, del info om opgangen. Hent gratis til iPhone og Android." />
+  <meta name="keywords" content="nabo app, nabolag, lån af naboer, boligforening app, hjemby, nabolagsapp, del med naboer, Danmark" />
+  <meta name="author" content="Hjemby" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hjemby.dk/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hjemby.dk/" />
+  <meta property="og:title" content="Hjemby - Appen der hjælper dig med at kende dine naboer" />
+  <meta property="og:description" content="Lån en boremaskine, få en anbefaling, del info om opgangen. Hjemby er den korteste vej til naboerne tæt på dig." />
+  <meta property="og:image" content="https://hjemby.dk/logo.png" />
+  <meta property="og:locale" content="da_DK" />
+  <meta property="og:site_name" content="Hjemby" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hjemby - Appen der hjælper dig med at kende dine naboer" />
+  <meta name="twitter:description" content="Lån en boremaskine, få en anbefaling, del info om opgangen. Hjemby er den korteste vej til naboerne tæt på dig." />
+  <meta name="twitter:image" content="https://hjemby.dk/logo.png" />
+
+  <!-- Theme color (browser chrome) -->
+  <meta name="theme-color" content="#358D7B" />
+
+  <!-- Strukturerede data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Hjemby",
+    "description": "Hjemby er nabo-appen der hjælper dig med at låne ting, spørge om råd og dele info med dem der bor tæt på dig.",
+    "operatingSystem": "iOS, Android",
+    "applicationCategory": "SocialNetworkingApplication",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "DKK" },
+    "inLanguage": "da",
+    "url": "https://hjemby.dk/",
+    "publisher": { "@type": "Organization", "name": "Hjemby", "url": "https://hjemby.dk/" }
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -582,7 +627,7 @@
 
       <div>
         <div class="hero-logo">
-          <img src="logo.png" alt="Hjemby" />
+          <img src="logo.png" alt="Hjemby logo" />
         </div>
 
         <h1>Mangler du en kop sukker? Eller måske en boremaskine?</h1>
@@ -720,10 +765,10 @@
       <div class="download-right">
         <div class="qr-card">
           <div class="qr-box">⬛</div>
-          <p class="qr-label">Scan og åbn Hjemby</p>
+          <p class="qr-label">Scan med kameraet og åbn Hjemby</p>
         </div>
-        <a href="https://hjemby-nabo-liv.base44.app" class="web-link" target="_blank" rel="noopener">
-          Åbn som webapp →
+        <a href="https://hjemby-nabo-liv.base44.app" class="web-link" target="_blank" rel="noopener noreferrer">
+          Prøv webversionen her →
         </a>
       </div>
     </div>
@@ -740,12 +785,12 @@
       </div>
 
       <ul class="footer-links">
-        <li><a href="https://etceteradigital.dk" target="_blank" rel="noopener">Et Cetera Digital</a></li>
+        <li><a href="https://etceteradigital.dk" target="_blank" rel="noopener noreferrer">Et Cetera Digital</a></li>
         <li><a href="#">Privatlivspolitik</a></li>
         <li><a href="#download">Download</a></li>
       </ul>
 
-      <p class="footer-copy">© 2026 Hjemby. Skabt med omtanke for naboer i Danmark.</p>
+      <p class="footer-copy">© 2026 Hjemby. Alle rettigheder forbeholdes.</p>
     </div>
   </div>
 </footer>
